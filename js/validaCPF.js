@@ -5,6 +5,10 @@ let chamaValidaCPF = (param) => {
    if (check == false) {
       elemento.classList.add("border-danger");
 
+   } else if (check == null) {
+      elemento.classList.remove("border-danger");
+      elemento.classList.remove("border-success");
+
    } else {
       elemento.classList.remove("border-danger");
       elemento.classList.add("border-success");
@@ -13,10 +17,13 @@ let chamaValidaCPF = (param) => {
 
 
 let validaCPF = (strCPF) => {
-   var Soma;
-   var Resto;
+   let Soma;
+   let Resto;
    Soma = 0;
+
+   if (strCPF == "") return null;
    if (strCPF == "00000000000") return false;
+
 
    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
    Resto = (Soma * 10) % 11;
